@@ -39,6 +39,7 @@ dependencies:
   flutter_blue: ^0.8.0
   get_storage: ^2.0.3
   auto_size_text: ^3.0.0
+  flutter_staggered_animations: ^1.1.1
 
 dev_dependencies:
   flutter_test:

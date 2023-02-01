@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 
 import '../../../Controllers/Home/home_controller.dart';
@@ -12,10 +13,17 @@ class BuildBreathingChartWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: Get.width,
-      height: Get.height * .25,
-      color: Colors.red,
+
+    return AnimationConfiguration.synchronized(
+      child: SlideAnimation(
+        child: FadeInAnimation(
+          child: Container(
+            width: Get.width,
+            height: Get.height * .25,
+            color: Colors.red,
+          ),
+        ),
+      ),
     );
   }
 
