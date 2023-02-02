@@ -16,6 +16,7 @@ class BuildHeartBitChartWidget extends StatelessWidget {
     return AnimationConfiguration.synchronized(
       child: SlideAnimation(
         child: FadeInAnimation(
+          duration: const Duration(milliseconds: 1000),
           child: Container(
             width: Get.width,
             height: Get.height * .25,

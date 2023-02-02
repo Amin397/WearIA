@@ -17,6 +17,7 @@ class BuildBreathingChartWidget extends StatelessWidget {
     return AnimationConfiguration.synchronized(
       child: SlideAnimation(
         child: FadeInAnimation(
+          duration: const Duration(milliseconds: 1500),
           child: Container(
             width: Get.width,
             height: Get.height * .25,

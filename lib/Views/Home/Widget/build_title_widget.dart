@@ -31,7 +31,7 @@ class BuildTitleWidget extends StatelessWidget {
                   AutoSizeText(
                     'Hello',
                     style: TextStyle(
-                      color: Colors.blueGrey.shade800,
+                      color: mainDarkColor,
                       fontSize: 22.0,
                       fontWeight: FontWeight.bold,
                     ),
@@ -39,7 +39,7 @@ class BuildTitleWidget extends StatelessWidget {
                   AutoSizeText(
                     'SAMANE',
                     style: TextStyle(
-                      color: Colors.pinkAccent.withOpacity(.55),
+                      color: mainRedColor,
                       fontSize: 30.0,
                       fontWeight: FontWeight.bold,
                     ),
@@ -60,7 +60,7 @@ class BuildTitleWidget extends StatelessWidget {
                   AutoSizeText(
                     'Monday',
                     style: TextStyle(
-                      color: Colors.blueGrey.shade800,
+                      color: mainDarkColor,
                       fontSize: 18.0,
                       fontWeight: FontWeight.bold,
                     ),
@@ -71,7 +71,7 @@ class BuildTitleWidget extends StatelessWidget {
                   AutoSizeText(
                     'oct20 ,2022',
                     style: TextStyle(
-                      color: Colors.blueGrey.shade800,
+                      color: mainDarkColor,
                       fontSize: 16.0,
                     ),
                   ),

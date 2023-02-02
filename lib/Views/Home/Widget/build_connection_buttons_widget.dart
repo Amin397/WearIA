@@ -13,7 +13,7 @@ class BuildConnectionButtonsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: Get.height * .05,
       width: Get.width * .8,
       child: Row(
@@ -26,15 +26,15 @@ class BuildConnectionButtonsWidget extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: radiusAll36,
                 border: Border.all(
-                  color: Colors.blue.withOpacity(.5),
+                  color: mainColor,
                   width: 2.0,
                 ),
               ),
-              child: Center(
+              child: const Center(
                 child: AutoSizeText(
                   'Connect',
                   style: TextStyle(
-                    color: Colors.blue.withOpacity(.5),
+                    color: mainColor,
                     fontSize: 18.0,
                     fontWeight: FontWeight.bold,
                   ),

@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:healthble/Controllers/Home/home_controller.dart';
 
@@ -29,47 +30,54 @@ class BuildMoreHealthDetailWidget extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Container(
-                    height: double.maxFinite,
-                    width: Get.width * .21,
-                    padding: paddingAll4,
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [
-                          Colors.blue.withAlpha(130),
-                          Colors.blue.withAlpha(130),
-                          Colors.red.withAlpha(50),
-                          Colors.red.withAlpha(200),
-                        ],
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
+                  AnimationConfiguration.synchronized(
+                    child: SlideAnimation(
+                      child: FadeInAnimation(
+                        duration: const Duration(milliseconds: 1000),
+                        child: Container(
+                          height: double.maxFinite,
+                          width: Get.width * .21,
+                          padding: paddingAll4,
+                          decoration: BoxDecoration(
+                            gradient:const LinearGradient(
+                              colors: [
+                                mainColor,
+                                mainColor,
+                                // Colors.red.withAlpha(50),
+                                mainRedColor,
+                              ],
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                            ),
+                            borderRadius: radiusAll16,
+                            boxShadow: shadow(),
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: const [
+                              Icon(
+                                Icons.favorite_border,
+                                color: Colors.white,
+                                size: 35.0,
+                              ),
+                              AutoSizeText(
+                                'Heart Rate',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                ),
+                              ),
+                              Text(
+                                '98',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18.0,
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
                       ),
-                      borderRadius: radiusAll16,
-                      boxShadow: shadow(),
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: const [
-                        Icon(
-                          Icons.favorite_border,
-                          color: Colors.white,
-                          size: 35.0,
-                        ),
-                        AutoSizeText(
-                          'Heart Rate',
-                          style: TextStyle(
-                            color: Colors.white,
-                          ),
-                        ),
-                        Text(
-                          '98',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18.0,
-                          ),
-                        )
-                      ],
                     ),
                   ),
                   _buildItem(
@@ -136,38 +144,47 @@ class BuildMoreHealthDetailWidget extends StatelessWidget {
     required String title,
     required String data,
   }) {
-    return Container(
-      height: double.maxFinite,
-      width: Get.width * .21,
-      decoration: BoxDecoration(
-        color: Colors.blue.withAlpha(150),
-        borderRadius: radiusAll16,
-        boxShadow: shadow(),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Icon(
-            icon,
-            color: Colors.white,
-            size: 35.0,
-          ),
-          AutoSizeText(
-            title,
-            textAlign: TextAlign.center,
-            style: const TextStyle(
-              color: Colors.white,
+
+
+    return AnimationConfiguration.synchronized(
+      child: SlideAnimation(
+        child: FadeInAnimation(
+          duration: const Duration(milliseconds: 1000),
+          child: Container(
+            height: double.maxFinite,
+            width: Get.width * .21,
+            decoration: BoxDecoration(
+              color: mainColor,
+              borderRadius: radiusAll16,
+              boxShadow: shadow(),
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Icon(
+                  icon,
+                  color: Colors.white,
+                  size: 35.0,
+                ),
+                AutoSizeText(
+                  title,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
+                Text(
+                  data,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18.0,
+                  ),
+                )
+              ],
             ),
           ),
-          Text(
-            data,
-            style: const TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-              fontSize: 18.0,
-            ),
-          )
-        ],
+        ),
       ),
     );
   }

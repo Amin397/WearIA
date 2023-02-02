@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:healthble/Consts/measures.dart';
 
 import '../../Controllers/Home/home_controller.dart';
 import 'Widget/build_breathing_chart_widget.dart';
 import 'Widget/build_connection_buttons_widget.dart';
+import 'Widget/build_drawer_widget.dart';
 import 'Widget/build_heart_bit_chart_widget.dart';
 import 'Widget/build_more_health_detail_widget.dart';
 import 'Widget/build_title_widget.dart';
@@ -16,6 +18,10 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: controller.drawerOpenerKey,
+      drawer: BuildDrawerWidget(
+        controller: controller,
+      ),
       body: SizedBox(
         height: Get.height,
         width: Get.width,
@@ -27,8 +33,13 @@ class HomeScreen extends StatelessWidget {
             Align(
               alignment: Alignment.centerLeft,
               child: IconButton(
-                icon: const Icon(Icons.menu),
-                onPressed: () {},
+                icon: const Icon(
+                  Icons.menu,
+                  color: mainDarkColor,
+                ),
+                onPressed: () {
+                  controller.openDrawer();
+                },
               ),
             ),
             SizedBox(
@@ -46,26 +57,24 @@ class HomeScreen extends StatelessWidget {
                         controller: controller,
                       ),
                       BuildHeartBitChartWidget(
-                        controller:controller,
+                        controller: controller,
                       ),
                       SizedBox(
                         height: Get.height * .03,
                       ),
                       BuildBreathingChartWidget(
-                        controller:controller,
+                        controller: controller,
                       ),
                       SizedBox(
                         height: Get.height * .03,
                       ),
                       BuildConnectionButtonsWidget(
-                        controller:controller,
+                        controller: controller,
                       ),
                       SizedBox(
                         height: Get.height * .02,
                       ),
-                      BuildMoreHealthDetailWidget(
-                          controller:controller
-                      ),
+                      BuildMoreHealthDetailWidget(controller: controller),
                       SizedBox(
                         height: Get.height * .05,
                       ),

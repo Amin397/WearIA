@@ -22,6 +22,7 @@ const EdgeInsets paddingSymmetricH30 = EdgeInsets.symmetric(horizontal: 24.0);
 const EdgeInsets paddingSymmetricV8 = EdgeInsets.symmetric(vertical: 8.0);
 const EdgeInsets paddingSymmetricV4 = EdgeInsets.symmetric(vertical: 4.0);
 const EdgeInsets paddingSymmetricV2 = EdgeInsets.symmetric(vertical: 2.0);
+const EdgeInsets paddingSymmetricV18 = EdgeInsets.symmetric(vertical: 18.0);
 const EdgeInsets paddingSymmetricV16 = EdgeInsets.symmetric(vertical: 16.0);
 const EdgeInsets paddingSymmetricV24 = EdgeInsets.symmetric(vertical: 24.0);
 
@@ -45,6 +46,14 @@ const double smallContentTextSize = 10.0;
 const appId = 'e1c71f23cce542b1b15b7b5063f29004';
 const token =
     "007eJxTYHCZfnDfUoFN3cYNlb3TwmWdixdW3rOKaGNfk7F9oavnxlUKDKmGyeaGaUbGycmppiZGSYZJhqZJ5kmmBmbGaUaWBgYmjk+EkvebiiR3bglmZWRgZGABYhCfCUwyg0kWMMnNkJibmVeUn59rYmDAwAAAoUomRA==";
+
+
+
+const Color mainColor = Color(0XFF9AD9EA);
+const Color mainDarkColor = Color(0XFF062554);
+const Color mainRedColor = Color(0XFFEC9AB1);
+const Color backgroundColor = Color(0XFFF6F7Fb);
+const Color textHintColor = Color(0XFF6C7584);
 
 List<BoxShadow> shadow({
   Offset offset = const Offset(0.0, 0.0),
