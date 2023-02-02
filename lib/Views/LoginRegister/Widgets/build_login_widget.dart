@@ -54,23 +54,28 @@ class BuildLoginWidget extends StatelessWidget {
           SizedBox(
             height: Get.height * .05,
           ),
-          Container(
-            width: Get.width,
-            height: Get.height * .05,
-            decoration: BoxDecoration(
-              color: mainRedColor,
-              borderRadius: radiusAll16,
-              boxShadow: shadow(
-                offset: const Offset(0.0, 3.0),
+          InkWell(
+            onTap: (){
+              controller.action();
+            },
+            child: Container(
+              width: Get.width,
+              height: Get.height * .05,
+              decoration: BoxDecoration(
+                color: mainRedColor,
+                borderRadius: radiusAll16,
+                boxShadow: shadow(
+                  offset: const Offset(0.0, 3.0),
+                ),
               ),
-            ),
-            child: const Center(
-              child: AutoSizeText(
-                'Login',
-                style: TextStyle(
-                  fontSize: 16.0,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
+              child: const Center(
+                child: AutoSizeText(
+                  'Login',
+                  style: TextStyle(
+                    fontSize: 16.0,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ),
@@ -81,7 +86,7 @@ class BuildLoginWidget extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
+                const Text(
                   'If you don\'t have an account ?',
                   style: TextStyle(
                     color: mainDarkColor,

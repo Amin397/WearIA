@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:healthble/Utils/rout_utils.dart';
 
 class LoginRegisterController extends GetxController{
   RxBool isLogin = true.obs;
@@ -15,6 +16,12 @@ class LoginRegisterController extends GetxController{
     passwordController.clear();
     confirmPasswordController.clear();
     isLogin(!isLogin.value);
+  }
+
+  void action() {
+    if(isLogin.isTrue){
+      Get.offAllNamed(NameRouts.home);
+    }
   }
 
 
