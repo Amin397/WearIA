@@ -63,7 +63,7 @@ class ProfileScreen extends StatelessWidget {
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: Colors.white,
-                        boxShadow: shadow(
+                        boxShadow: blackShadow(
                           offset: const Offset(-2.0, 3.0),
                         ),
                       ),

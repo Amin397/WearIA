@@ -99,23 +99,24 @@ class LoginRegisterScreen extends StatelessWidget {
       alignment: Alignment.topCenter,
       child: Container(
         margin: EdgeInsets.symmetric(
-          vertical: Get.height * .15,
+          vertical: Get.height * .1,
         ),
-        height: Get.height * .2,
+        height: Get.height * .25,
         width: Get.width * .5,
         child: Column(
-          children: [
+          children: const [
             Expanded(
-              child: Container(
+              child: SizedBox(
                 height: double.maxFinite,
                 width: double.maxFinite,
-                color: Colors.red,
-                child: const Center(
-                  child: Text('Logo'),
+                child: Image(
+                  image: AssetImage(
+                    'assets/images/logo.png',
+                  ),
                 ),
               ),
             ),
-            const Text(
+            Text(
               'WearIA',
               style: TextStyle(
                 color: mainDarkColor,

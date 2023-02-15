@@ -40,6 +40,8 @@ dependencies:
   get_storage: ^2.0.3
   auto_size_text: ^3.0.0
   flutter_staggered_animations: ^1.1.1
+  lottie: ^2.2.0
+  syncfusion_flutter_charts: ^20.4.48
 
 dev_dependencies:
   flutter_test:

@@ -19,6 +19,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       key: controller.drawerOpenerKey,
+      backgroundColor: bgColor,
       drawer: BuildDrawerWidget(
         controller: controller,
       ),
@@ -74,7 +75,9 @@ class HomeScreen extends StatelessWidget {
                       SizedBox(
                         height: Get.height * .02,
                       ),
-                      BuildMoreHealthDetailWidget(controller: controller),
+                      BuildMoreHealthDetailWidget(
+                        controller: controller,
+                      ),
                       SizedBox(
                         height: Get.height * .05,
                       ),

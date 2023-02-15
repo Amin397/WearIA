@@ -78,7 +78,7 @@ class BuildRegisterWidget extends StatelessWidget {
               decoration: BoxDecoration(
                 color: mainRedColor,
                 borderRadius: radiusAll16,
-                boxShadow: shadow(
+                boxShadow: blackShadow(
                   offset: const Offset(0.0, 3.0),
                 ),
               ),

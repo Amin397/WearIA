@@ -25,6 +25,7 @@ const EdgeInsets paddingSymmetricV2 = EdgeInsets.symmetric(vertical: 2.0);
 const EdgeInsets paddingSymmetricV18 = EdgeInsets.symmetric(vertical: 18.0);
 const EdgeInsets paddingSymmetricV16 = EdgeInsets.symmetric(vertical: 16.0);
 const EdgeInsets paddingSymmetricV24 = EdgeInsets.symmetric(vertical: 24.0);
+const EdgeInsets paddingSymmetricV36 = EdgeInsets.symmetric(vertical: 36.0);
 
 final BorderRadius radiusAll6 = BorderRadius.circular(6.0);
 final BorderRadius radiusAll8 = BorderRadius.circular(8.0);
@@ -54,13 +55,27 @@ const Color mainDarkColor = Color(0XFF062554);
 const Color mainRedColor = Color(0XFFEC9AB1);
 const Color backgroundColor = Color(0XFFF6F7Fb);
 const Color textHintColor = Color(0XFF6C7584);
+const Color bgColor = Color(0XFFECECEC);
 
-List<BoxShadow> shadow({
+List<BoxShadow> blackShadow({
   Offset offset = const Offset(0.0, 0.0),
 }) {
   return [
     BoxShadow(
       color: Colors.black26 ,
+      blurRadius: 8.0,
+      spreadRadius: 3.0,
+      offset: offset,
+    ),
+  ];
+}
+
+List<BoxShadow> whiteShadow({
+  Offset offset = const Offset(0.0, 0.0),
+}) {
+  return [
+    BoxShadow(
+      color: Colors.white24 ,
       blurRadius: 8.0,
       spreadRadius: 3.0,
       offset: offset,

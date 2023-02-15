@@ -50,7 +50,7 @@ class BuildMoreHealthDetailWidget extends StatelessWidget {
                               end: Alignment.bottomRight,
                             ),
                             borderRadius: radiusAll16,
-                            boxShadow: shadow(),
+                            boxShadow: blackShadow(),
                           ),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -156,7 +156,7 @@ class BuildMoreHealthDetailWidget extends StatelessWidget {
             decoration: BoxDecoration(
               color: mainColor,
               borderRadius: radiusAll16,
-              boxShadow: shadow(),
+              boxShadow: blackShadow(),
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,

@@ -13,58 +13,56 @@ class BuildConnectionButtonsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: Get.height * .05,
-      width: Get.width * .8,
+    return Container(
+      padding: paddingSymmetricH12,
+      height: Get.height * .045,
+      width: Get.width,
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          Flexible(
-            flex: 1,
-            child: Container(
-              height: double.maxFinite,
-              width: double.maxFinite,
-              decoration: BoxDecoration(
-                borderRadius: radiusAll36,
-                border: Border.all(
-                  color: mainColor,
-                  width: 2.0,
-                ),
+          Container(
+            height: double.maxFinite,
+            width: Get.width * .3,
+            decoration: BoxDecoration(
+              boxShadow: whiteShadow(),
+              borderRadius: radiusAll36,
+              color: const Color(0XFF2F66BD),
+              border: Border.all(
+                color: const Color(0XFF2F66BD),
+                width: 1.0,
               ),
-              child: const Center(
-                child: AutoSizeText(
-                  'Connect',
-                  style: TextStyle(
-                    color: mainColor,
-                    fontSize: 18.0,
-                    fontWeight: FontWeight.bold,
-                  ),
+            ),
+            child: const Center(
+              child: AutoSizeText(
+                'Connect',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),
           ),
           SizedBox(
-            width: Get.width * .05,
+            width: Get.width * .03,
           ),
-          Flexible(
-            flex: 1,
-            child: Container(
-              height: double.maxFinite,
-              width: double.maxFinite,
-              decoration: BoxDecoration(
-                borderRadius: radiusAll36,
-                border: Border.all(
-                  color: Colors.red.withOpacity(.5),
-                  width: 2.0,
-                ),
+          Container(
+            height: double.maxFinite,
+            width: Get.width * .3,
+            decoration: BoxDecoration(
+              borderRadius: radiusAll36,
+              border: Border.all(
+                color: Colors.red.withOpacity(.5),
+                width: 2.0,
               ),
-              child: Center(
-                child: AutoSizeText(
-                  'Disconnect',
-                  style: TextStyle(
-                    color: Colors.red.withOpacity(.5),
-                    fontSize: 18.0,
-                    fontWeight: FontWeight.bold,
-                  ),
+            ),
+            child: Center(
+              child: AutoSizeText(
+                'Disconnect',
+                style: TextStyle(
+                  color: Colors.red.withOpacity(.5),
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),
