@@ -7,7 +7,8 @@ import 'Widget/build_breathing_chart_widget.dart';
 import 'Widget/build_connection_buttons_widget.dart';
 import 'Widget/build_drawer_widget.dart';
 import 'Widget/build_heart_bit_chart_widget.dart';
-import 'Widget/build_more_health_detail_widget.dart';
+import 'Widget/build_heart_rate_chart_widget.dart';
+import 'Widget/build_respiration_rate_chart_widget.dart';
 import 'Widget/build_title_widget.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -51,7 +52,7 @@ class HomeScreen extends StatelessWidget {
                 height: double.maxFinite,
                 width: double.maxFinite,
                 child: SingleChildScrollView(
-                  physics: const BouncingScrollPhysics(),
+                  // physics: const BouncingScrollPhysics(),
                   child: Column(
                     children: [
                       BuildTitleWidget(
@@ -73,14 +74,109 @@ class HomeScreen extends StatelessWidget {
                         controller: controller,
                       ),
                       SizedBox(
-                        height: Get.height * .02,
+                        height: Get.height * .03,
                       ),
-                      BuildMoreHealthDetailWidget(
-                        controller: controller,
-                      ),
-                      SizedBox(
-                        height: Get.height * .05,
-                      ),
+                      Container(
+                        width: Get.width,
+                        // height: Get.height * .88,
+                        padding: paddingAll32,
+                        decoration: BoxDecoration(
+                          borderRadius: const BorderRadius.vertical(
+                            top: Radius.circular(24.0),
+                          ),
+                          color: Colors.white,
+                          boxShadow: blackShadow(
+                            offset: const Offset(0.0, 3.0),
+                          ),
+                        ),
+                        child: Column(
+                          children: [
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                'Heart Rate',
+                                style: TextStyle(
+                                  color: blackTextColor,
+                                  fontSize: 20.0,
+                                  shadows: blackShadow(),
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                            SizedBox(height: Get.height * .01,),
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                '140 bpm',
+                                style: TextStyle(
+                                  color: mainRedColor,
+                                  fontSize: 18.0,
+                                  shadows: blackShadow(),
+                                  // fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                            SizedBox(height: Get.height * .01,),
+                            BuildHeartRateChartWidget(
+                              controller: controller,
+                            ),
+                            SizedBox(height: Get.height * .06,),
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                'Respiration Rate',
+                                style: TextStyle(
+                                  color: blackTextColor,
+                                  fontSize: 20.0,
+                                  shadows: blackShadow(),
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                            SizedBox(height: Get.height * .01,),
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                '98 bpm',
+                                style: TextStyle(
+                                  color: blueTextColor,
+                                  fontSize: 18.0,
+                                  shadows: blackShadow(),
+                                  // fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                            SizedBox(height: Get.height * .01,),
+                            BuildRespirationRateChartWidget(
+                              controller: controller,
+                            ),
+                            SizedBox(height: Get.height * .06,),
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                'Activity',
+                                style: TextStyle(
+                                  color: blackTextColor,
+                                  fontSize: 22.0,
+                                  shadows: blackShadow(),
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                            SizedBox(height: Get.height * .02,),
+                            _buildStepsPart()
+                          ],
+                        ),
+                      )
+                      // SizedBox(
+                      //   height: Get.height * .02,
+                      // ),
+                      // BuildMoreHealthDetailWidget(
+                      //   controller: controller,
+                      // ),
+                      // SizedBox(
+                      //   height: Get.height * .05,
+                      // ),
                     ],
                   ),
                 ),
@@ -88,6 +184,18 @@ class HomeScreen extends StatelessWidget {
             )
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _buildStepsPart() {
+    return Container(
+      width: Get.width,
+      height: Get.height * .1,
+      decoration: BoxDecoration(
+        color: mainColor,
+        borderRadius: radiusAll16,
+        boxShadow: blackShadow(),
       ),
     );
   }

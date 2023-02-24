@@ -56,13 +56,15 @@ const Color mainRedColor = Color(0XFFEC9AB1);
 const Color backgroundColor = Color(0XFFF6F7Fb);
 const Color textHintColor = Color(0XFF6C7584);
 const Color bgColor = Color(0XFFECECEC);
+const Color blackTextColor = Color(0XFF062454);
+const Color blueTextColor = Color(0XFF2F66BD);
 
 List<BoxShadow> blackShadow({
   Offset offset = const Offset(0.0, 0.0),
 }) {
   return [
     BoxShadow(
-      color: Colors.black26 ,
+      color: Colors.black12 ,
       blurRadius: 8.0,
       spreadRadius: 3.0,
       offset: offset,
