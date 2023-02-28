@@ -2,12 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:healthble/Views/Home/home_screen.dart';
 
 import 'Utils/rout_utils.dart';
 import 'Views/Splash/splash_screen.dart';
-
-
-
 
 void main()async{
 

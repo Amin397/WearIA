@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:healthble/Consts/measures.dart';
 
 import '../../Controllers/Home/home_controller.dart';
+import '../../main.dart';
 import 'Widget/build_activity_widget.dart';
 import 'Widget/build_breathing_chart_widget.dart';
 import 'Widget/build_connection_buttons_widget.dart';
@@ -33,26 +34,40 @@ class HomeScreen extends StatelessWidget {
             SizedBox(
               height: Get.height * .03,
             ),
-            Align(
-              alignment: Alignment.centerLeft,
-              child: IconButton(
-                icon: const Icon(
-                  Icons.menu,
-                  color: mainDarkColor,
+            Obx(
+              () => AnimatedContainer(
+                duration: const Duration(milliseconds: 200),
+                color: (controller.isWhite.isTrue) ? Colors.white : bgColor,
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: IconButton(
+                    icon: const Icon(
+                      Icons.menu,
+                      color: mainDarkColor,
+                    ),
+                    onPressed: () {
+                      controller.openDrawer(
+                        context: context,
+                      );
+                      // Scaffold.of(context).openDrawer();
+                    },
+                  ),
                 ),
-                onPressed: () {
-                  controller.openDrawer();
-                },
               ),
             ),
-            SizedBox(
-              height: Get.height * .01,
+            Obx(
+              () => AnimatedContainer(
+                height: Get.height * .01,
+                duration: const Duration(milliseconds: 200),
+                color: (controller.isWhite.isTrue) ? Colors.white : bgColor,
+              ),
             ),
             Expanded(
               child: SizedBox(
                 height: double.maxFinite,
                 width: double.maxFinite,
                 child: SingleChildScrollView(
+                  controller: controller.scrollController,
                   // physics: const BouncingScrollPhysics(),
                   child: Column(
                     children: [
@@ -104,7 +119,9 @@ class HomeScreen extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            SizedBox(height: Get.height * .01,),
+                            SizedBox(
+                              height: Get.height * .01,
+                            ),
                             Align(
                               alignment: Alignment.centerLeft,
                               child: Text(
@@ -117,11 +134,15 @@ class HomeScreen extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            SizedBox(height: Get.height * .01,),
+                            SizedBox(
+                              height: Get.height * .01,
+                            ),
                             BuildHeartRateChartWidget(
                               controller: controller,
                             ),
-                            SizedBox(height: Get.height * .06,),
+                            SizedBox(
+                              height: Get.height * .06,
+                            ),
                             Align(
                               alignment: Alignment.centerLeft,
                               child: Text(
@@ -134,7 +155,9 @@ class HomeScreen extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            SizedBox(height: Get.height * .01,),
+                            SizedBox(
+                              height: Get.height * .01,
+                            ),
                             Align(
                               alignment: Alignment.centerLeft,
                               child: Text(
@@ -147,11 +170,15 @@ class HomeScreen extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            SizedBox(height: Get.height * .01,),
+                            SizedBox(
+                              height: Get.height * .01,
+                            ),
                             BuildRespirationRateChartWidget(
                               controller: controller,
                             ),
-                            SizedBox(height: Get.height * .06,),
+                            SizedBox(
+                              height: Get.height * .06,
+                            ),
                             Align(
                               alignment: Alignment.centerLeft,
                               child: Text(
@@ -164,22 +191,15 @@ class HomeScreen extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            SizedBox(height: Get.height * .02,),
+                            SizedBox(
+                              height: Get.height * .02,
+                            ),
                             BuildActivityWidget(
-                              controller:controller,
+                              controller: controller,
                             ),
                           ],
                         ),
                       )
-                      // SizedBox(
-                      //   height: Get.height * .02,
-                      // ),
-                      // BuildMoreHealthDetailWidget(
-                      //   controller: controller,
-                      // ),
-                      // SizedBox(
-                      //   height: Get.height * .05,
-                      // ),
                     ],
                   ),
                 ),

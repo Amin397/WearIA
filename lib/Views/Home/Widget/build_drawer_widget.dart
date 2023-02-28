@@ -51,46 +51,17 @@ class BuildDrawerWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   _buildMenuText(
-                    title: 'Home',
-                    function: () {},
-                  ),
-                  _buildMenuText(
-                    title: 'Heart Rate ',
-                    function: () {},
-                  ),
-                  _buildMenuText(
-                    title: 'Respiration Rate',
-                    function: () {},
-                  ),
-                  _buildMenuText(
-                    title: 'Steps',
-                    function: () {},
-                  ),
-                  _buildMenuText(
-                    title: 'Distance',
-                    function: () {},
-                  ),
-                  _buildMenuText(
-                    title: 'Last Speed',
-                    function: () {},
-                  ),
-                  _buildMenuText(
-                    title: 'Calories',
-                    function: () {},
-                  ),
-                  _buildMenuText(
-                    title: 'Step Rate ',
-                    function: () {},
-                  ),
-                  _buildMenuText(
-                    title: 'Activity Level',
-                    function: () {},
-                  ),
-                  _buildMenuText(
                     title: 'Profile',
                     function: () {
                       Get.back();
                       Get.toNamed(NameRouts.profile);
+                    },
+                  ),
+                  _buildMenuText(
+                    title: 'Help',
+                    function: () {
+                      Get.back();
+                      // Get.toNamed(NameRouts.profile);
                     },
                   ),
                 ],
