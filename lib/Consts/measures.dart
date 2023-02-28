@@ -64,7 +64,7 @@ List<BoxShadow> blackShadow({
 }) {
   return [
     BoxShadow(
-      color: Colors.black12 ,
+      color: Colors.black.withOpacity(.18) ,
       blurRadius: 8.0,
       spreadRadius: 3.0,
       offset: offset,

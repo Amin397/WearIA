@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:healthble/Consts/measures.dart';
 
 import '../../Controllers/Home/home_controller.dart';
+import 'Widget/build_activity_widget.dart';
 import 'Widget/build_breathing_chart_widget.dart';
 import 'Widget/build_connection_buttons_widget.dart';
 import 'Widget/build_drawer_widget.dart';
@@ -164,7 +165,9 @@ class HomeScreen extends StatelessWidget {
                               ),
                             ),
                             SizedBox(height: Get.height * .02,),
-                            _buildStepsPart()
+                            BuildActivityWidget(
+                              controller:controller,
+                            ),
                           ],
                         ),
                       )
@@ -184,18 +187,6 @@ class HomeScreen extends StatelessWidget {
             )
           ],
         ),
-      ),
-    );
-  }
-
-  Widget _buildStepsPart() {
-    return Container(
-      width: Get.width,
-      height: Get.height * .1,
-      decoration: BoxDecoration(
-        color: mainColor,
-        borderRadius: radiusAll16,
-        boxShadow: blackShadow(),
       ),
     );
   }
