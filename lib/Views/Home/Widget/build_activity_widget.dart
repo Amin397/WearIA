@@ -32,41 +32,46 @@ class BuildActivityWidget extends StatelessWidget {
   }
 
   Widget _buildStepsPart() {
-    return Container(
-      width: Get.width,
-      height: Get.height * .1,
-      decoration: BoxDecoration(
-        color: mainColor,
-        borderRadius: radiusAll16,
-        boxShadow: blackShadow(),
-      ),
-      child: Row(
-        children: [
-          _buildStepItems(
-            title: 'Steps',
-            value: '10.23',
-          ),
-          Container(
-            width: 1.0,
-            height: double.maxFinite,
-            margin: paddingSymmetricV8,
-            color: Colors.white,
-          ),
-          _buildStepItems(
-            title: 'Distance',
-            value: '3.34 m',
-          ),
-          Container(
-            width: 1.0,
-            height: double.maxFinite,
-            margin: paddingSymmetricV8,
-            color: Colors.white,
-          ),
-          _buildStepItems(
-            title: 'Calories',
-            value: '350 kcal',
-          ),
-        ],
+    return InkWell(
+      onTap: (){
+        controller.goToActivity();
+      },
+      child: Container(
+        width: Get.width,
+        height: Get.height * .1,
+        decoration: BoxDecoration(
+          color: mainColor,
+          borderRadius: radiusAll16,
+          boxShadow: blackShadow(),
+        ),
+        child: Row(
+          children: [
+            _buildStepItems(
+              title: 'Steps',
+              value: '10.23',
+            ),
+            Container(
+              width: 1.0,
+              height: double.maxFinite,
+              margin: paddingSymmetricV8,
+              color: Colors.white,
+            ),
+            _buildStepItems(
+              title: 'Distance',
+              value: '3.34 m',
+            ),
+            Container(
+              width: 1.0,
+              height: double.maxFinite,
+              margin: paddingSymmetricV8,
+              color: Colors.white,
+            ),
+            _buildStepItems(
+              title: 'Calories',
+              value: '350 kcal',
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -117,27 +122,32 @@ class BuildActivityWidget extends StatelessWidget {
   }
 
   Widget _buildSpeedPart() {
-    return SizedBox(
-      width: Get.width,
-      height: Get.height * .1,
-      child: Row(
-        children: [
-          _buildSpeedItem(
-            title: 'Last Speed',
-            value: '56 km/h',
-            boxColor: mainDarkColor,
-            valueColor: mainColor,
-          ),
-          SizedBox(
-            width: Get.width * .05,
-          ),
-          _buildSpeedItem(
-            title: 'Activity Level',
-            value: 'Rest',
-            boxColor: mainRedColor,
-            valueColor: mainDarkColor,
-          ),
-        ],
+    return InkWell(
+      onTap: (){
+        controller.goToActivity();
+      },
+      child: SizedBox(
+        width: Get.width,
+        height: Get.height * .1,
+        child: Row(
+          children: [
+            _buildSpeedItem(
+              title: 'Last Speed',
+              value: '56 km/h',
+              boxColor: mainDarkColor,
+              valueColor: mainColor,
+            ),
+            SizedBox(
+              width: Get.width * .05,
+            ),
+            _buildSpeedItem(
+              title: 'Activity Level',
+              value: 'Rest',
+              boxColor: mainRedColor,
+              valueColor: mainDarkColor,
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -197,62 +207,67 @@ class BuildActivityWidget extends StatelessWidget {
   }
 
   Widget _buildStepRatePart() {
-    return Container(
-      height: Get.height * .1,
-      width: Get.width,
-      decoration: BoxDecoration(
-        color: blueTextColor,
-        borderRadius: radiusAll16,
-        boxShadow: blackShadow(),
-      ),
-      padding: paddingAll12,
-      child: Row(
-        children: [
-          Flexible(
-            flex: 1,
-            child: SizedBox(
-              height: double.maxFinite,
-              width: double.maxFinite,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const AutoSizeText(
-                    'Step Rate',
-                    maxLines: 1,
-                    maxFontSize: 20.0,
-                    minFontSize: 12.0,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16.0,
-                      fontWeight: FontWeight.bold,
-                      letterSpacing: .5,
+    return InkWell(
+      onTap: (){
+        controller.goToActivity();
+      },
+      child: Container(
+        height: Get.height * .1,
+        width: Get.width,
+        decoration: BoxDecoration(
+          color: blueTextColor,
+          borderRadius: radiusAll16,
+          boxShadow: blackShadow(),
+        ),
+        padding: paddingAll12,
+        child: Row(
+          children: [
+            Flexible(
+              flex: 1,
+              child: SizedBox(
+                height: double.maxFinite,
+                width: double.maxFinite,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const AutoSizeText(
+                      'Step Rate',
+                      maxLines: 1,
+                      maxFontSize: 20.0,
+                      minFontSize: 12.0,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: .5,
+                      ),
                     ),
-                  ),
-                  SizedBox(
-                    height: Get.height * .01,
-                  ),
-                  const AutoSizeText(
-                    '2',
-                    maxLines: 1,
-                    maxFontSize: 20.0,
-                    minFontSize: 12.0,
-                    style: TextStyle(
-                      color: mainRedColor,
-                      fontSize: 16.0,
-                      fontWeight: FontWeight.bold,
-                      letterSpacing: .5,
+                    SizedBox(
+                      height: Get.height * .01,
                     ),
-                  ),
-                ],
+                    const AutoSizeText(
+                      '2',
+                      maxLines: 1,
+                      maxFontSize: 20.0,
+                      minFontSize: 12.0,
+                      style: TextStyle(
+                        color: mainRedColor,
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: .5,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-          SizedBox(
-            width: Get.width * .02,
-          ),
-          _buildStepCart(),
-        ],
+            SizedBox(
+              width: Get.width * .02,
+            ),
+            _buildStepCart(),
+          ],
+        ),
       ),
     );
   }

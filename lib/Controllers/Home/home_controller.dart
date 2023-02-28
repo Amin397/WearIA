@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:healthble/Utils/rout_utils.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 import '../../Views/Home/Widget/ble_devices_modal.dart';
@@ -71,6 +72,10 @@ class HomeController extends GetxController {
         controller: this,
       ),
     );
+  }
+
+  void goToActivity() {
+    Get.toNamed(NameRouts.singleActivity);
   }
 }
 
