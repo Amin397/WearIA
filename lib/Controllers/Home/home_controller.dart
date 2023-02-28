@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
+import '../../Views/Home/Widget/ble_devices_modal.dart';
 import '../../main.dart';
 
 class HomeController extends GetxController {
@@ -13,9 +14,6 @@ class HomeController extends GetxController {
   late TooltipBehavior tooltip;
 
   final GlobalKey<ScaffoldState> drawerOpenerKey = GlobalKey();
-
-
-
 
   @override
   void onInit() {
@@ -44,10 +42,12 @@ class HomeController extends GetxController {
     super.onInit();
   }
 
-  void openDrawer({required BuildContext context,}) {
+  void openDrawer({
+    required BuildContext context,
+  }) {
     drawerOpenerKey.currentState!.openDrawer();
-  //   // Scaffold.of(context).openDrawer();
-  //
+    //   // Scaffold.of(context).openDrawer();
+    //
   }
 
   List<SalesData> data = [
@@ -57,6 +57,21 @@ class HomeController extends GetxController {
     SalesData('20Ms', 32),
     SalesData('25Ms', 40)
   ];
+
+  void openBleDevicesModal({
+    required BuildContext context,
+  }) async {
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: Colors.transparent,
+      enableDrag: false,
+      isDismissible: false,
+      isScrollControlled: true,
+      builder: (BuildContext context) => BleDevicesModal(
+        controller: this,
+      ),
+    );
+  }
 }
 
 class SalesData {

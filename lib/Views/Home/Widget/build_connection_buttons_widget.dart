@@ -20,25 +20,35 @@ class BuildConnectionButtonsWidget extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          Container(
-            height: double.maxFinite,
-            width: Get.width * .3,
-            decoration: BoxDecoration(
-              boxShadow: whiteShadow(),
+          InkWell(
+            customBorder: RoundedRectangleBorder(
               borderRadius: radiusAll36,
-              color: const Color(0XFF2F66BD),
-              border: Border.all(
-                color: const Color(0XFF2F66BD),
-                width: 1.0,
-              ),
             ),
-            child: const Center(
-              child: AutoSizeText(
-                'Connect',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18.0,
-                  fontWeight: FontWeight.bold,
+            onTap: () {
+              controller.openBleDevicesModal(
+                context: context,
+              );
+            },
+            child: Container(
+              height: double.maxFinite,
+              width: Get.width * .3,
+              decoration: BoxDecoration(
+                boxShadow: whiteShadow(),
+                borderRadius: radiusAll36,
+                color: const Color(0XFF2F66BD),
+                border: Border.all(
+                  color: const Color(0XFF2F66BD),
+                  width: 1.0,
+                ),
+              ),
+              child: const Center(
+                child: AutoSizeText(
+                  'Connect',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ),
