@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
@@ -20,40 +21,67 @@ class BuildBreathingChartWidget extends StatelessWidget {
           duration: const Duration(milliseconds: 1500),
           child: Container(
             width: Get.width,
-            height: Get.height * .25,
+            height: Get.height * .3,
             margin: EdgeInsets.symmetric(
               horizontal: Get.width * .05,
               vertical: Get.height * .01,
             ),
+            padding: paddingAll12,
             decoration: BoxDecoration(
-              color: mainDarkColor,
+              color: Colors.white,
               borderRadius: radiusAll16,
               boxShadow: blackShadow(),
             ),
-            child: SfCartesianChart(
-              primaryXAxis: CategoryAxis(),
-              // Chart title
-              // Enable legend
-              legend: Legend(isVisible: false),
-              // Enable tooltip
-              tooltipBehavior: TooltipBehavior(enable: true),
-              series: <ChartSeries<SalesData, String>>[
-                LineSeries<SalesData, String>(
-                  dataSource: controller.data,
-                  xValueMapper: (SalesData sales, _) => sales.year,
-                  yValueMapper: (SalesData sales, _) => sales.sales,
-                  color: mainColor,
-                  animationDuration: 3.0,
-                  // Enable data label
-                  dataLabelSettings: DataLabelSettings(
-                    isVisible: false,
-                    color: Colors.white,
+            child: Column(
+              children: [
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: SvgPicture.asset(
+                    'assets/images/svg/breath.svg',
                   ),
-                )
+                ),
+                Expanded(
+                  child: SizedBox(
+                    height: double.maxFinite,
+                    width: double.maxFinite,
+                    child: SfCartesianChart(
+                      backgroundColor: Colors.white,
+                      primaryXAxis: CategoryAxis(),
+                      borderColor: Colors.white,
+                      plotAreaBorderColor: Colors.white,
+                      plotAreaBackgroundColor: Colors.white,
+                      primaryYAxis: NumericAxis(
+                        minimum: 0,
+
+                        maximum: 60,
+                        interval: 5,
+                        borderColor: blueTextColor,
+                        majorGridLines: const MajorGridLines(
+                          color: blueTextColor,
+                        ),
+                        axisLine: const AxisLine(
+                          color: blueTextColor,
+                        ),
+                        minorGridLines: const MinorGridLines(
+                          color: blueTextColor,
+                        ),
+                      ),
+                      tooltipBehavior: controller.tooltip,
+                      series: <ChartSeries>[
+                        // Renders line chart
+                        LineSeries<SalesData, String>(
+                          dataSource: controller.data,
+                          xValueMapper: (SalesData sales, _) =>
+                              '${sales.year}h',
+                          yValueMapper: (SalesData sales, _) => sales.sales,
+                          color: mainDarkColor,
+                          width: 2.5,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
               ],
-              plotAreaBackgroundColor: mainDarkColor,
-              plotAreaBorderColor: mainDarkColor,
-              borderColor: mainDarkColor,
             ),
             // child: LineChart(
             //   LineChartData(

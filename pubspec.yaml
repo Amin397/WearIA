@@ -42,6 +42,7 @@ dependencies:
   flutter_staggered_animations: ^1.1.1
   lottie: ^2.2.0
   syncfusion_flutter_charts: ^20.4.48
+  flutter_svg: ^2.0.2
 
 dev_dependencies:
   flutter_test:
@@ -70,6 +71,7 @@ flutter:
     - assets/images/
     - assets/anims/
     - assets/fonts/
+    - assets/images/svg/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

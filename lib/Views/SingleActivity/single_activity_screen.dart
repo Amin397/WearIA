@@ -4,6 +4,10 @@ import 'package:get/get.dart';
 
 import '../../Consts/measures.dart';
 import '../../Controllers/SingleActivity/single_activity_controller.dart';
+import 'Widgets/build_activity_level_activity_widget.dart';
+import 'Widgets/build_more_activity_data_widget.dart';
+import 'Widgets/build_speed_activity_widget.dart';
+import 'Widgets/build_steps_activity_widget.dart';
 
 class SingleActivityScreen extends StatelessWidget {
   SingleActivityScreen({Key? key}) : super(key: key);
@@ -15,10 +19,10 @@ class SingleActivityScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: mainDarkColor,
-      body: Container(
+      body: SizedBox(
         height: Get.height,
         width: Get.width,
-        padding: paddingAll16,
+        // padding: paddingAll16,
         child: Column(
           children: [
             SizedBox(
@@ -30,7 +34,7 @@ class SingleActivityScreen extends StatelessWidget {
                 customBorder: RoundedRectangleBorder(
                   borderRadius: radiusAll36,
                 ),
-                onTap: (){
+                onTap: () {
                   Get.back();
                 },
                 child: const Padding(
@@ -43,15 +47,39 @@ class SingleActivityScreen extends StatelessWidget {
               ),
             ),
             Expanded(
-              child: Container(
-                padding: paddingAll16,
+              child: SizedBox(
                 height: double.maxFinite,
                 width: double.maxFinite,
-                child: Column(
-                  children: [
-                    _buildDatePart(),
-                    _buildStepsPart(),
-                  ],
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      _buildDatePart(),
+                      SizedBox(
+                        height: Get.height * .03,
+                      ),
+                      BuildStepsActivityWidget(
+                        controller: controller,
+                      ),
+                      SizedBox(
+                        height: Get.height * .07,
+                      ),
+                      BuildSpeedActivityWidget(
+                        controller: controller,
+                      ),
+                      SizedBox(
+                        height: Get.height * .07,
+                      ),
+                      BuildActivityLevelActivityWidget(
+                        controller: controller,
+                      ),
+                      SizedBox(
+                        height: Get.height * .07,
+                      ),
+                      BuildMoreActivityDataWidget(
+                        controller: controller,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             )
@@ -64,34 +92,39 @@ class SingleActivityScreen extends StatelessWidget {
   Widget _buildDatePart() {
     return Align(
       alignment: Alignment.centerRight,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
-          AutoSizeText(
-            'Monday',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 18.0,
-              fontWeight: FontWeight.bold,
+      child: Container(
+        padding: paddingAll8,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                AutoSizeText(
+                  'Monday',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Icon(Icons.keyboard_arrow_down , color: Colors.white,)
+              ],
             ),
-          ),
-          SizedBox(
-            height: 6.0,
-          ),
-          AutoSizeText(
-            'oct20 ,2022',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 16.0,
+            SizedBox(
+              height: 6.0,
             ),
-          ),
-        ],
+            AutoSizeText(
+              'oct20 ,2022',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 16.0,
+              ),
+            ),
+          ],
+        ),
       ),
     );
-  }
-
-  Widget _buildStepsPart() {
-    return Container();
   }
 }

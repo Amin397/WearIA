@@ -36,9 +36,8 @@ class HomeController extends GetxController {
     ];
     tooltip = TooltipBehavior(
       enable: true,
-      color: Colors.red,
-      borderColor: Colors.red,
-      shadowColor: Colors.red,
+      duration: 5.0
+
     );
     super.onInit();
   }

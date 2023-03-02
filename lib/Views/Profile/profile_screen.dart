@@ -72,7 +72,7 @@ class ProfileScreen extends StatelessWidget {
                       height: Get.height * .02,
                     ),
                     const Text(
-                      'SAMANE',
+                      'KIMIA',
                       style: TextStyle(
                         color: mainRedColor,
                         fontSize: 24.0,

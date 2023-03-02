@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:healthble/Consts/measures.dart';
 import 'package:healthble/Controllers/Home/home_controller.dart';
@@ -19,45 +20,71 @@ class BuildHeartBitChartWidget extends StatelessWidget {
           duration: const Duration(milliseconds: 1000),
           child: Container(
               width: Get.width,
-              height: Get.height * .25,
+              height: Get.height * .3,
               margin: EdgeInsets.symmetric(
                 horizontal: Get.width * .05,
                 vertical: Get.height * .01,
               ),
-              padding: paddingAll8,
+              padding: paddingAll12,
               decoration: BoxDecoration(
-                color: mainColor,
+                color: Colors.white,
                 borderRadius: radiusAll16,
                 boxShadow: blackShadow(),
               ),
-              child: GetBuilder(
-                init: controller,
-                id: 'heart',
-                builder: (ctx) {
-                  return SfCartesianChart(
-                    primaryXAxis: CategoryAxis(),
-                    // Chart title
-                    // Enable legend
-                    legend: Legend(isVisible: false),
-                    // Enable tooltip
-                    tooltipBehavior: TooltipBehavior(
-                      enable: true,
-                      animationDuration: 1,
-                      duration: 1.0,
+              child: Column(
+                children: [
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: SvgPicture.asset(
+                      'assets/images/svg/heart.svg',
                     ),
-                    series: <ChartSeries<SalesData, String>>[
-                      LineSeries<SalesData, String>(
-                        dataSource: controller.data,
-                        xValueMapper: (SalesData sales, _) => sales.year,
-                        yValueMapper: (SalesData sales, _) => sales.sales,
-                        animationDelay: 1.0,
-                        dataLabelSettings: DataLabelSettings(
-                          isVisible: false,
+                  ),
+                  GetBuilder(
+                    init: controller,
+                    id: 'heart',
+                    builder: (ctx) {
+                      return Expanded(
+                        child: SizedBox(
+                          height: double.maxFinite,
+                          width: double.maxFinite,
+                          child: SfCartesianChart(
+                            backgroundColor: Colors.white,
+                            primaryXAxis: CategoryAxis(),
+                            borderColor: Colors.white,
+                            plotAreaBorderColor: Colors.white,
+                            plotAreaBackgroundColor: Colors.white,
+                            primaryYAxis: NumericAxis(
+                              minimum: 0,
+                              maximum: 60,
+                              interval: 5,
+                              borderColor: Colors.white,
+                              majorGridLines: const MajorGridLines(
+                                color: mainRedColor,
+                              ),
+                              axisLine: const AxisLine(
+                                color: mainRedColor,
+                              ),
+                              minorGridLines: const MinorGridLines(
+                                color: mainRedColor,
+                              ),
+                            ),
+                            tooltipBehavior: controller.tooltip,
+                            series: <ChartSeries>[
+                              // Renders line chart
+                              LineSeries<SalesData, String>(
+                                dataSource: controller.data,
+                                xValueMapper: (SalesData sales, _) => '${sales.year}h',
+                                yValueMapper: (SalesData sales, _) => sales.sales,
+                                color: mainDarkColor,
+                                width: 2.5,
+                              ),
+                            ],
+                          ),
                         ),
-                      )
-                    ],
-                  );
-                },
+                      );
+                    },
+                  ),
+                ],
               )
             // child: LineChart(
             //   LineChartData(

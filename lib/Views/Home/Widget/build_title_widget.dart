@@ -27,7 +27,7 @@ class BuildTitleWidget extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+                children: const [
                   AutoSizeText(
                     'Hello',
                     style: TextStyle(
@@ -37,7 +37,7 @@ class BuildTitleWidget extends StatelessWidget {
                     ),
                   ),
                   AutoSizeText(
-                    'SAMANE',
+                    'KIMIA',
                     style: TextStyle(
                       color: mainRedColor,
                       fontSize: 30.0,
@@ -57,18 +57,23 @@ class BuildTitleWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  AutoSizeText(
-                    'Monday',
-                    style: TextStyle(
-                      color: mainDarkColor,
-                      fontSize: 18.0,
-                      fontWeight: FontWeight.bold,
-                    ),
+                  Row(
+                    children: const [
+                      AutoSizeText(
+                        'Monday',
+                        style: TextStyle(
+                          color: mainDarkColor,
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Icon(Icons.keyboard_arrow_down)
+                    ],
                   ),
                   const SizedBox(
                     height: 6.0,
                   ),
-                  AutoSizeText(
+                  const AutoSizeText(
                     'oct20 ,2022',
                     style: TextStyle(
                       color: mainDarkColor,
