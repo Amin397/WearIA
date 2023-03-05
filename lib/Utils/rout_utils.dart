@@ -3,6 +3,7 @@ import 'package:healthble/Views/Profile/profile_screen.dart';
 import '../Views/Home/home_screen.dart';
 import '../Views/LoginRegister/login_register_screen.dart';
 import '../Views/SingleActivity/single_activity_screen.dart';
+import '../Views/SingleBreathChart/single_breath_chart_screen.dart';
 import '../Views/SingleHeartChart/single_heart_chart_screen.dart';
 import '../Views/Splash/splash_screen.dart';
 
@@ -13,6 +14,7 @@ class NameRouts {
   static const String loginRegister = '/loginRegister';
   static const String singleActivity = '/singleActivity';
   static const String singleHeartChart = '/singleHeartChart';
+  static const String singleBreathChart = '/singleBreathChart';
 }
 
 class PageRout {
@@ -28,6 +30,14 @@ class PageRout {
     GetPage(
       name: NameRouts.singleActivity,
       page: () => SingleActivityScreen(),
+      transition: Transition.topLevel,
+      transitionDuration: const Duration(
+        milliseconds: 800,
+      ),
+    ),
+    GetPage(
+      name: NameRouts.singleBreathChart,
+      page: () => SingleBreathChartScreen(),
       transition: Transition.topLevel,
       transitionDuration: const Duration(
         milliseconds: 800,

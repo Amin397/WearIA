@@ -68,9 +68,7 @@ class HomeController extends GetxController {
       enableDrag: false,
       isDismissible: false,
       isScrollControlled: true,
-      builder: (BuildContext context) => BleDevicesModal(
-        controller: this,
-      ),
+      builder: (BuildContext context) => BleDevicesModal(),
     );
   }
 
@@ -90,6 +88,18 @@ class HomeController extends GetxController {
     });
 
 
+
+  }
+
+  void goToSingleBreathBitChart() {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.landscapeLeft,
+      DeviceOrientation.landscapeRight,
+    ]).then((value) {
+      Future.delayed(const Duration(milliseconds: 200) , (){
+        Get.toNamed(NameRouts.singleBreathChart);
+      });
+    });
 
   }
 }

@@ -4,9 +4,7 @@ import 'package:healthble/Consts/measures.dart';
 import 'package:healthble/Controllers/Home/home_controller.dart';
 
 class BleDevicesModal extends StatelessWidget {
-  const BleDevicesModal({Key? key, required this.controller}) : super(key: key);
-
-  final HomeController controller;
+  const BleDevicesModal({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

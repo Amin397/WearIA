@@ -44,39 +44,56 @@ class BuildBreathingChartWidget extends StatelessWidget {
                   child: SizedBox(
                     height: double.maxFinite,
                     width: double.maxFinite,
-                    child: SfCartesianChart(
-                      backgroundColor: Colors.white,
-                      primaryXAxis: CategoryAxis(),
-                      borderColor: Colors.white,
-                      plotAreaBorderColor: Colors.white,
-                      plotAreaBackgroundColor: Colors.white,
-                      primaryYAxis: NumericAxis(
-                        minimum: 0,
+                    child: Stack(
+                      children: [
+                        SizedBox(
+                          height: double.maxFinite,
+                          width: double.maxFinite,
+                          child: SfCartesianChart(
+                            backgroundColor: Colors.white,
+                            primaryXAxis: CategoryAxis(),
+                            borderColor: Colors.white,
+                            plotAreaBorderColor: Colors.white,
+                            plotAreaBackgroundColor: Colors.white,
+                            primaryYAxis: NumericAxis(
+                              minimum: 0,
 
-                        maximum: 60,
-                        interval: 5,
-                        borderColor: blueTextColor,
-                        majorGridLines: const MajorGridLines(
-                          color: blueTextColor,
+                              maximum: 60,
+                              interval: 5,
+                              borderColor: blueTextColor,
+                              majorGridLines: const MajorGridLines(
+                                color: blueTextColor,
+                              ),
+                              axisLine: const AxisLine(
+                                color: blueTextColor,
+                              ),
+                              minorGridLines: const MinorGridLines(
+                                color: blueTextColor,
+                              ),
+                            ),
+                            tooltipBehavior: controller.tooltip,
+                            series: <ChartSeries>[
+                              // Renders line chart
+                              LineSeries<SalesData, String>(
+                                dataSource: controller.data,
+                                xValueMapper: (SalesData sales, _) =>
+                                    '${sales.year}h',
+                                yValueMapper: (SalesData sales, _) => sales.sales,
+                                color: mainDarkColor,
+                                width: 2.5,
+                              ),
+                            ],
+                          ),
                         ),
-                        axisLine: const AxisLine(
-                          color: blueTextColor,
-                        ),
-                        minorGridLines: const MinorGridLines(
-                          color: blueTextColor,
-                        ),
-                      ),
-                      tooltipBehavior: controller.tooltip,
-                      series: <ChartSeries>[
-                        // Renders line chart
-                        LineSeries<SalesData, String>(
-                          dataSource: controller.data,
-                          xValueMapper: (SalesData sales, _) =>
-                              '${sales.year}h',
-                          yValueMapper: (SalesData sales, _) => sales.sales,
-                          color: mainDarkColor,
-                          width: 2.5,
-                        ),
+                        InkWell(
+                          onTap: (){
+                            controller.goToSingleBreathBitChart();
+                          },
+                          child: const SizedBox(
+                            height: double.maxFinite,
+                            width: double.maxFinite,
+                          ),
+                        )
                       ],
                     ),
                   ),
