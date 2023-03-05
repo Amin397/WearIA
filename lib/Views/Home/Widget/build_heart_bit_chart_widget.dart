@@ -47,37 +47,56 @@ class BuildHeartBitChartWidget extends StatelessWidget {
                         child: SizedBox(
                           height: double.maxFinite,
                           width: double.maxFinite,
-                          child: SfCartesianChart(
-                            backgroundColor: Colors.white,
-                            primaryXAxis: CategoryAxis(),
-                            borderColor: Colors.white,
-                            plotAreaBorderColor: Colors.white,
-                            plotAreaBackgroundColor: Colors.white,
-                            primaryYAxis: NumericAxis(
-                              minimum: 0,
-                              maximum: 60,
-                              interval: 5,
-                              borderColor: Colors.white,
-                              majorGridLines: const MajorGridLines(
-                                color: mainRedColor,
+                          child: Stack(
+                            children: [
+                              SizedBox(
+                                height: double.maxFinite,
+                                width: double.maxFinite,
+                                child: SfCartesianChart(
+                                  backgroundColor: Colors.white,
+                                  primaryXAxis: CategoryAxis(),
+                                  borderColor: Colors.white,
+                                  plotAreaBorderColor: Colors.white,
+                                  plotAreaBackgroundColor: Colors.white,
+                                  primaryYAxis: NumericAxis(
+                                    minimum: 0,
+                                    maximum: 60,
+                                    interval: 5,
+                                    borderColor: Colors.white,
+                                    majorGridLines: const MajorGridLines(
+                                      color: mainRedColor,
+                                    ),
+                                    axisLine: const AxisLine(
+                                      color: mainRedColor,
+                                    ),
+                                    minorGridLines: const MinorGridLines(
+                                      color: mainRedColor,
+                                    ),
+                                  ),
+                                  tooltipBehavior: controller.tooltip,
+                                  series: <ChartSeries>[
+                                    // Renders line chart
+                                    LineSeries<SalesData, String>(
+                                      dataSource: controller.data,
+                                      xValueMapper: (SalesData sales, _) =>
+                                          '${sales.year}h',
+                                      yValueMapper: (SalesData sales, _) =>
+                                          sales.sales,
+                                      color: mainDarkColor,
+                                      width: 2.5,
+                                    ),
+                                  ],
+                                ),
                               ),
-                              axisLine: const AxisLine(
-                                color: mainRedColor,
-                              ),
-                              minorGridLines: const MinorGridLines(
-                                color: mainRedColor,
-                              ),
-                            ),
-                            tooltipBehavior: controller.tooltip,
-                            series: <ChartSeries>[
-                              // Renders line chart
-                              LineSeries<SalesData, String>(
-                                dataSource: controller.data,
-                                xValueMapper: (SalesData sales, _) => '${sales.year}h',
-                                yValueMapper: (SalesData sales, _) => sales.sales,
-                                color: mainDarkColor,
-                                width: 2.5,
-                              ),
+                              InkWell(
+                                onTap: (){
+                                  controller.goToSingleHeartBitChart();
+                                },
+                                child: const SizedBox(
+                                  height: double.maxFinite,
+                                  width: double.maxFinite,
+                                ),
+                              )
                             ],
                           ),
                         ),
@@ -86,96 +105,96 @@ class BuildHeartBitChartWidget extends StatelessWidget {
                   ),
                 ],
               )
-            // child: LineChart(
-            //   LineChartData(
-            //     gridData: FlGridData(
-            //       show: true,
-            //       drawVerticalLine: true,
-            //       horizontalInterval: 1,
-            //       verticalInterval: 1,
-            //       getDrawingHorizontalLine: (value) {
-            //         return FlLine(
-            //           color: Colors.cyan,
-            //           strokeWidth: 1,
-            //         );
-            //       },
-            //       getDrawingVerticalLine: (value) {
-            //         return FlLine(
-            //           color: Colors.blue,
-            //           strokeWidth: 1,
-            //         );
-            //       },
-            //     ),
-            //     titlesData: FlTitlesData(
-            //       show: true,
-            //       rightTitles: AxisTitles(
-            //         sideTitles: SideTitles(showTitles: false),
-            //       ),
-            //       topTitles: AxisTitles(
-            //         sideTitles: SideTitles(showTitles: false),
-            //       ),
-            //       bottomTitles: AxisTitles(
-            //         sideTitles: SideTitles(
-            //           showTitles: true,
-            //           reservedSize: 30,
-            //           interval: 1,
-            //           getTitlesWidget: controller.bottomTitleWidgets,
-            //         ),
-            //       ),
-            //       leftTitles: AxisTitles(
-            //         sideTitles: SideTitles(
-            //           showTitles: true,
-            //           interval: 1,
-            //           getTitlesWidget: controller.leftTitleWidgets,
-            //           reservedSize: 42,
-            //         ),
-            //       ),
-            //     ),
-            //     borderData: FlBorderData(
-            //       show: true,
-            //       border: Border.all(color: const Color(0xff37434d)),
-            //     ),
-            //     minX: 0,
-            //     maxX: 11,
-            //     minY: 0,
-            //     maxY: 6,
-            //     lineBarsData: [
-            //       LineChartBarData(
-            //         spots: const [
-            //           FlSpot(0, 3),
-            //           FlSpot(2.6, 2),
-            //           FlSpot(4.9, 5),
-            //           FlSpot(6.8, 3.1),
-            //           FlSpot(8, 4),
-            //           FlSpot(9.5, 3),
-            //           FlSpot(11, 4),
-            //         ],
-            //         isCurved: true,
-            //         // gradient: LinearGradient(
-            //         //   colors: [
-            //         //     mainColor,
-            //         //     mainDarkColor
-            //         //   ],
-            //         // ),
-            //         barWidth: 5,
-            //         isStrokeCapRound: true,
-            //         dotData: FlDotData(
-            //           show: false,
-            //         ),
-            //         belowBarData: BarAreaData(
-            //           show: false,
-            //           gradient: LinearGradient(
-            //             colors: [
-            //               mainColor,
-            //               mainDarkColor
-            //             ],
-            //           ),
-            //         ),
-            //       ),
-            //     ],
-            //   ),
-            // ),
-          ),
+              // child: LineChart(
+              //   LineChartData(
+              //     gridData: FlGridData(
+              //       show: true,
+              //       drawVerticalLine: true,
+              //       horizontalInterval: 1,
+              //       verticalInterval: 1,
+              //       getDrawingHorizontalLine: (value) {
+              //         return FlLine(
+              //           color: Colors.cyan,
+              //           strokeWidth: 1,
+              //         );
+              //       },
+              //       getDrawingVerticalLine: (value) {
+              //         return FlLine(
+              //           color: Colors.blue,
+              //           strokeWidth: 1,
+              //         );
+              //       },
+              //     ),
+              //     titlesData: FlTitlesData(
+              //       show: true,
+              //       rightTitles: AxisTitles(
+              //         sideTitles: SideTitles(showTitles: false),
+              //       ),
+              //       topTitles: AxisTitles(
+              //         sideTitles: SideTitles(showTitles: false),
+              //       ),
+              //       bottomTitles: AxisTitles(
+              //         sideTitles: SideTitles(
+              //           showTitles: true,
+              //           reservedSize: 30,
+              //           interval: 1,
+              //           getTitlesWidget: controller.bottomTitleWidgets,
+              //         ),
+              //       ),
+              //       leftTitles: AxisTitles(
+              //         sideTitles: SideTitles(
+              //           showTitles: true,
+              //           interval: 1,
+              //           getTitlesWidget: controller.leftTitleWidgets,
+              //           reservedSize: 42,
+              //         ),
+              //       ),
+              //     ),
+              //     borderData: FlBorderData(
+              //       show: true,
+              //       border: Border.all(color: const Color(0xff37434d)),
+              //     ),
+              //     minX: 0,
+              //     maxX: 11,
+              //     minY: 0,
+              //     maxY: 6,
+              //     lineBarsData: [
+              //       LineChartBarData(
+              //         spots: const [
+              //           FlSpot(0, 3),
+              //           FlSpot(2.6, 2),
+              //           FlSpot(4.9, 5),
+              //           FlSpot(6.8, 3.1),
+              //           FlSpot(8, 4),
+              //           FlSpot(9.5, 3),
+              //           FlSpot(11, 4),
+              //         ],
+              //         isCurved: true,
+              //         // gradient: LinearGradient(
+              //         //   colors: [
+              //         //     mainColor,
+              //         //     mainDarkColor
+              //         //   ],
+              //         // ),
+              //         barWidth: 5,
+              //         isStrokeCapRound: true,
+              //         dotData: FlDotData(
+              //           show: false,
+              //         ),
+              //         belowBarData: BarAreaData(
+              //           show: false,
+              //           gradient: LinearGradient(
+              //             colors: [
+              //               mainColor,
+              //               mainDarkColor
+              //             ],
+              //           ),
+              //         ),
+              //       ),
+              //     ],
+              //   ),
+              // ),
+              ),
         ),
       ),
     );

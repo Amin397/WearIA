@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:healthble/Utils/rout_utils.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
@@ -75,6 +76,21 @@ class HomeController extends GetxController {
 
   void goToActivity() {
     Get.toNamed(NameRouts.singleActivity);
+  }
+
+  void goToSingleHeartBitChart() {
+
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.landscapeLeft,
+      DeviceOrientation.landscapeRight,
+    ]).then((value) {
+      Future.delayed(const Duration(milliseconds: 200) , (){
+        Get.toNamed(NameRouts.singleHeartChart);
+      });
+    });
+
+
+
   }
 }
 
