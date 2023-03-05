@@ -210,7 +210,7 @@ class ProfileScreen extends StatelessWidget {
                                 height: Get.height * .07,
                                 hint: 'Age',
                                 inputType: TextInputType.number,
-                                obscureText: true,
+                                obscureText: false,
                                 controller: controller.ageTextController,
                                 textStyle: const TextStyle(
                                   color: mainDarkColor,

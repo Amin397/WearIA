@@ -1,5 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:healthble/Controllers/LoginRegister/login_register_controller.dart';
 
@@ -23,6 +25,48 @@ class BuildLoginWidget extends StatelessWidget {
       width: Get.width,
       child: Column(
         children: [
+          Container(
+            width: Get.width,
+            height: Get.height * .05,
+            decoration: BoxDecoration(
+              borderRadius: radiusAll6,
+              color: Colors.white,
+              boxShadow: blackShadow(),
+              border: Border.all(
+                color: Colors.grey.shade700,
+                width: 1.0,
+              ),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SvgPicture.asset('assets/images/svg/googleLogo.svg'),
+                SizedBox(width: 6.0,),
+                Text('Sign in with Google'),
+              ],
+            ),
+          ),
+          SizedBox(height: Get.height * .03,),
+          Row(
+            children: [
+              Expanded(
+                child: Container(
+                  width: double.maxFinite,
+                  height: 1.0,
+                  color: Colors.grey,
+                ),
+              ),
+              const Text('  Or  '),
+              Expanded(
+                child: Container(
+                  width: double.maxFinite,
+                  height: 1.0,
+                  color: Colors.grey,
+                ),
+              ),
+            ],
+          ),
+          SizedBox(height: Get.height * .02,),
           WidgetUtils.textField(
             width: Get.width,
             height: Get.height * .07,
@@ -55,7 +99,7 @@ class BuildLoginWidget extends StatelessWidget {
             height: Get.height * .05,
           ),
           InkWell(
-            onTap: (){
+            onTap: () {
               controller.action();
             },
             child: Container(
